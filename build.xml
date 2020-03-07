@@ -954,7 +954,6 @@
         <element name="linux-arm64-content" optional="true"/>
         <element name="linux-arm32-content" optional="true"/>
         <element name="macos-content" optional="true"/>
-        <element name="openbsd-content" optional="true"/>
         <element name="windows-content" optional="true"/>
         <element name="windows-x86-content" optional="true"/>
         <sequential>
@@ -984,9 +983,6 @@
 
                 <get-release platform="macos" arch="x64" file="lib@{native-library}.dylib" if:set="auto-natives"/>
                 <get-release platform="macos" arch="x64" file="lib@{native-library}.dylib.git" if:set="git-revision"/>
-
-                <get-release platform="openbsd" arch="x64" file="lib@{native-library}.so" if:set="auto-natives"/>
-                <get-release platform="openbsd" arch="x64" file="lib@{native-library}.so.git" if:set="git-revision"/>
 
                 <get-release platform="windows" arch="x64" file="@{native-library}.dll" if:set="auto-natives"/>
                 <get-release platform="windows" arch="x64" file="@{native-library}.dll.git" if:set="git-revision"/>
