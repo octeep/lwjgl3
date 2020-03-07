@@ -201,6 +201,7 @@
             <src path="${core.kotlin.path}/libc"/>
             <src path="${core.kotlin.path}/linux"/>
             <src path="${core.kotlin.path}/macos"/>
+            <src path="${core.kotlin.path}/openbsd"/>
             <src path="${core.kotlin.path}/templates"/>
             <src path="${core.kotlin.path}/windows"/>
 
@@ -839,6 +840,7 @@
         <local name="revision"/>
         <property name="revision" value="liblwjgl.so.git" if:set="platform.linux"/>
         <property name="revision" value="liblwjgl.dylib.git" if:set="platform.macos"/>
+        <property name="revision" value="liblwjgl.so.git" if:set="platform.openbsd"/>
         <property name="revision" value="lwjgl.dll.git" if:set="platform.windows"/>
 
         <exec executable="git" failonerror="true" output="${lib.native}/org/lwjgl/${revision}" taskname="Git revision">
@@ -952,6 +954,7 @@
         <element name="linux-arm64-content" optional="true"/>
         <element name="linux-arm32-content" optional="true"/>
         <element name="macos-content" optional="true"/>
+        <element name="openbsd-content" optional="true"/>
         <element name="windows-content" optional="true"/>
         <element name="windows-x86-content" optional="true"/>
         <sequential>
@@ -981,6 +984,9 @@
 
                 <get-release platform="macos" arch="x64" file="lib@{native-library}.dylib" if:set="auto-natives"/>
                 <get-release platform="macos" arch="x64" file="lib@{native-library}.dylib.git" if:set="git-revision"/>
+
+                <get-release platform="openbsd" arch="x64" file="lib@{native-library}.so" if:set="auto-natives"/>
+                <get-release platform="openbsd" arch="x64" file="lib@{native-library}.so.git" if:set="git-revision"/>
 
                 <get-release platform="windows" arch="x64" file="@{native-library}.dll" if:set="auto-natives"/>
                 <get-release platform="windows" arch="x64" file="@{native-library}.dll.git" if:set="git-revision"/>
@@ -1039,6 +1045,9 @@
                 <natives-jar name="@{name}" title="@{title}" platform="macos" path="macos/x64" type="dylib">
                     <macos-content/>
                 </natives-jar>
+                <natives-jar name="@{name}" title="@{title}" platform="openbsd" path="openbsd/x64" type="so">
+                    <openbsd-content/>
+                </natives-jar>
                 <natives-jar name="@{name}" title="@{title}" platform="windows" path="windows/x64" type="dll">
                     <windows-content/>
                 </natives-jar>
@@ -1058,6 +1067,7 @@
         <element name="linux-arm64" optional="true"/>
         <element name="linux-arm32" optional="true"/>
         <element name="macos" optional="true"/>
+        <element name="openbsd" optional="true"/>
         <element name="windows" optional="true"/>
         <element name="windows-x86" optional="true"/>
         <sequential>
@@ -1079,6 +1089,7 @@
                 <linux-arm64-content><linux-arm64/></linux-arm64-content>
                 <linux-arm32-content><linux-arm32/></linux-arm32-content>
                 <macos-content><macos/></macos-content>
+                <openbsd-content><openbsd/></openbsd-content>
                 <windows-content><windows/></windows-content>
                 <windows-x86-content><windows-x86/></windows-x86-content>
             </release-natives>
@@ -1274,6 +1285,9 @@
                 <get-release platform="macos" arch="x64" file="libglfw.dylib"/>
                 <get-release platform="macos" arch="x64" file="libglfw.dylib.git"/>
 
+                <get-release platform="openbsd" arch="x64" file="libglfw.so"/>
+                <get-release platform="openbsd" arch="x64" file="libglfw.so.git"/>
+
                 <get-release platform="windows" arch="x64" file="glfw.dll"/>
                 <get-release platform="windows" arch="x64" file="glfw.dll.git"/>
 
@@ -1306,6 +1320,7 @@
                 <get-release platform="linux" arch="x64" file="liblwjgl_meow.so"/>
                 <get-release platform="linux" arch="arm64" file="liblwjgl_meow.so"/>
                 <get-release platform="macos" arch="x64" file="liblwjgl_meow.dylib"/>
+                <get-release platform="openbsd" arch="x64" file="liblwjgl_meow.so"/>
                 <get-release platform="windows" arch="x64" file="lwjgl_meow.dll"/>
                 <get-release platform="windows" arch="x86" file="lwjgl_meow.dll"/>
             </natives>
@@ -1322,6 +1337,7 @@
             <natives>
                 <get-release platform="linux" arch="x64" file="liblwjgl_nfd.so"/>
                 <get-release platform="macos" arch="x64" file="liblwjgl_nfd.dylib"/>
+                <get-release platform="openbsd" arch="x64" file="liblwjgl_nfd.so"/>
                 <get-release platform="windows" arch="x64" file="lwjgl_nfd.dll"/>
                 <get-release platform="windows" arch="x86" file="lwjgl_nfd.dll"/>
             </natives>
@@ -1347,6 +1363,9 @@
 
                 <get-release platform="macos" arch="x64" file="libopenal.dylib"/>
                 <get-release platform="macos" arch="x64" file="libopenal.dylib.git"/>
+
+                <get-release platform="openbsd" arch="x64" file="libopenal.so"/>
+                <get-release platform="openbsd" arch="x64" file="libopenal.so.git"/>
 
                 <get-release platform="windows" arch="x64" file="OpenAL.dll"/>
                 <get-release platform="windows" arch="x64" file="OpenAL.dll.git"/>
@@ -1375,6 +1394,10 @@
                 <get-release platform="macos" arch="x64" file="liblwjgl_openvr.dylib"/>
                 <get-release platform="macos" arch="x64" file="libopenvr_api.dylib"/>
                 <get-release platform="macos" arch="x64" file="libopenvr_api.dylib.git"/>
+
+                <get-release platform="openbsd" arch="x64" file="liblwjgl_openvr.so"/>
+                <get-release platform="openbsd" arch="x64" file="libopenvr_api.so"/>
+                <get-release platform="openbsd" arch="x64" file="libopenvr_api.so.git"/>
 
                 <get-release platform="windows" arch="x64" file="lwjgl_openvr.dll"/>
                 <get-release platform="windows" arch="x64" file="openvr_api.dll"/>
@@ -1425,6 +1448,10 @@
                 <get-release platform="macos" arch="x64" file="libshaderc.dylib.git"/>
                 <get-release platform="macos" arch="x64" file="libshaderc_spvc.dylib"/>
 
+                <get-release platform="openbsd" arch="x64" file="libshaderc.so"/>
+                <get-release platform="openbsd" arch="x64" file="libshaderc.so.git"/>
+                <get-release platform="openbsd" arch="x64" file="libshaderc_spvc.so"/>
+
                 <get-release platform="windows" arch="x64" file="shaderc.dll"/>
                 <get-release platform="windows" arch="x64" file="shaderc.dll.git"/>
                 <get-release platform="windows" arch="x64" file="shaderc_spvc.dll"/>
@@ -1443,6 +1470,7 @@
             <natives>
                 <get-release platform="linux" arch="x64" file="liblwjgl_sse.so"/>
                 <get-release platform="macos" arch="x64" file="liblwjgl_sse.dylib"/>
+                <get-release platform="openbsd" arch="x64" file="liblwjgl_sse.so"/>
                 <get-release platform="windows" arch="x64" file="lwjgl_sse.dll"/>
                 <get-release platform="windows" arch="x86" file="lwjgl_sse.dll"/>
             </natives>
@@ -1462,6 +1490,7 @@
             <natives>
                 <get-release platform="linux" arch="x64" file="liblwjgl_tootle.so"/>
                 <get-release platform="macos" arch="x64" file="liblwjgl_tootle.dylib"/>
+                <get-release platform="openbsd" arch="x64" file="liblwjgl_tootle.so"/>
                 <get-release platform="windows" arch="x64" file="lwjgl_tootle.dll"/>
                 <get-release platform="windows" arch="x86" file="lwjgl_tootle.dll"/>
             </natives>

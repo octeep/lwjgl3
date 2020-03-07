@@ -99,12 +99,16 @@ This script is included in /build.xml and /config/update-dependencies.xml.
     <condition property="platform.macos">
         <os name="Mac OS X"/>
     </condition>
+    <condition property="platform.openbsd">
+        <os name="OpenBSD"/>
+    </condition>
     <condition property="platform.windows">
         <os family="Windows"/>
     </condition>
 
     <property name="platform" value="linux" if:set="platform.linux"/>
     <property name="platform" value="macos" if:set="platform.macos"/>
+    <property name="platform" value="openbsd" if:set="platform.openbsd"/>
     <property name="platform" value="windows" if:set="platform.windows"/>
 
     <property name="platform.remote" value="macosx" if:set="platform.macos"/>
@@ -112,6 +116,7 @@ This script is included in /build.xml and /config/update-dependencies.xml.
 
     <property name="platform.linux.remote" value="linux"/>
     <property name="platform.macos.remote" value="macosx"/>
+    <property name="platform.openbsd.remote" value="openbsd"/>
     <property name="platform.windows.remote" value="windows"/>
 
     <property name="lib.native" location="${lib}/native/${platform}/${build.arch}" relative="true"/>
