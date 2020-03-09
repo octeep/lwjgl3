@@ -49,6 +49,7 @@ public enum Platform {
 
             return System.mapLibraryName(name);
         }
+    },
     WINDOWS("Windows", "windows") {
         @Override
         String mapLibraryName(String name) {
