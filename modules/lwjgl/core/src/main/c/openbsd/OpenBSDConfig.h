@@ -4,6 +4,7 @@
  */
 
 #include <stddef.h>
+#include <string.h>
 #include <inttypes.h>
 
 #define DISABLE_WARNINGS() \
