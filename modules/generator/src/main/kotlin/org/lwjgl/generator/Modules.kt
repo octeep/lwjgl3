@@ -56,6 +56,11 @@ enum class Module(
         "org.lwjgl.system.macosx",
         "Contains bindings to native APIs specific to the macOS operating system."
     ),
+    CORE_OPENBSD(
+        "core.openbsd",
+        "org.lwjgl.system.openbsd",
+        "Contains bindings to native APIs specific to the Linux operating system."
+    ),
     CORE_WINDOWS(
         "core.windows",
         "org.lwjgl.system.windows",

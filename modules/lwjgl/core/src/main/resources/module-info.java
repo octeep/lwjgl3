@@ -12,5 +12,6 @@ module org.lwjgl {
     exports org.lwjgl.system.libc;
     exports org.lwjgl.system.linux;
     exports org.lwjgl.system.macosx;
+    exports org.lwjgl.system.openbsd;
     exports org.lwjgl.system.windows;
 }
