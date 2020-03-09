@@ -38,6 +38,17 @@ public enum Platform {
             return System.mapLibraryName(name);
         }
     },
+    OPENBSD("OpenBSD", "openbsd") {
+        private final Pattern SO = Pattern.compile("(?:^|/)lib\\w+[.]so(?:[.]\\d+)*$");
+
+        @Override
+        String mapLibraryName(String name) {
+            if (SO.matcher(name).find()) {
+                return name;
+            }
+
+            return System.mapLibraryName(name);
+        }
     WINDOWS("Windows", "windows") {
         @Override
         String mapLibraryName(String name) {
