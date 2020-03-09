@@ -59,7 +59,7 @@
         <attribute name="lang" default="c"/>
         <attribute name="gcc.exec" default="${gcc.prefix}cc${gcc.suffix}"/>
         <attribute name="gpp.exec" default="${gcc.prefix}c++${gcc.suffix}"/>
-        <attribute name="flags" default="-Werror -Wfatal-errors"/>
+        <attribute name="flags" default=""/>
         <attribute name="simple" default="false"/>
         <element name="beforeCompile" optional="true"/>
         <element name="source" optional="true"/>
@@ -164,7 +164,7 @@
         <parallel threadsPerProcessor="2">
 
         <!-- CORE -->
-        <build module="core" flags="-Werror -Wfatal-errors -Wall -Wextra -pedantic">
+        <build module="core" flags="-Wall -Wextra -pedantic">
             <source>
                 <arg value="-I${src.main.rel}/dyncall"/>
                 <fileset dir=".">
@@ -259,7 +259,7 @@
                 <isset property="build.arch.x86"/>
             </or>
         </condition>
-        <build module="meow" simple="true" flags="-Werror -Wfatal-errors ${meow.flags}" if:true="${binding.meow}"/>
+        <build module="meow" simple="true" flags="${meow.flags}" if:true="${binding.meow}"/>
 
         <!-- NanoVG -->
         <build module="nanovg" simple="true" if:true="${binding.nanovg}">
