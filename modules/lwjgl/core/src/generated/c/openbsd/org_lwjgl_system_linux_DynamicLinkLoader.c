@@ -4,7 +4,7 @@
  * MACHINE GENERATED FILE, DO NOT EDIT
  */
 #include "common_tools.h"
-#include "LinuxLWJGL.h"
+#include "OpenBSDLWJGL.h"
 #include <dlfcn.h>
 
 EXTERN_C_ENTER

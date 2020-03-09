@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <string.h>
 
 void *old_memcpy(void *, const void *, size_t);
 
