@@ -201,6 +201,7 @@
             <src path="${core.kotlin.path}/libc"/>
             <src path="${core.kotlin.path}/linux"/>
             <src path="${core.kotlin.path}/macos"/>
+            <src path="${core.kotlin.path}/openbsd"/>
             <src path="${core.kotlin.path}/templates"/>
             <src path="${core.kotlin.path}/windows"/>
 
