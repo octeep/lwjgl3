@@ -166,13 +166,6 @@
                     <include name="${module.lwjgl}/jawt/src/generated/c/*.c" if:true="${binding.jawt}"/>
                 </fileset>
             </source>
-            <beforeLink>
-                <parallel threadsPerProcessor="2" failonany="true" unless:set="lib-dependencies-uptodate">
-                    <update-dependency module="core" artifact="core/libdyncall_s.a"/>
-                    <update-dependency module="core" artifact="core/libdyncallback_s.a"/>
-                    <update-dependency module="core" artifact="core/libdynload_s.a"/>
-                </parallel>
-            </beforeLink>
             <link>
                 <fileset dir="${lib.native}/org/lwjgl">
                     <include name="libdyn*.a"/>
@@ -183,20 +176,6 @@
 
         <!-- BULLET -->
         <build module="bullet" simple="true" linker="c++" if:true="${binding.bullet}">
-            <beforeLink>
-                <parallel threadsPerProcessor="2" failonany="true" unless:set="lib-dependencies-uptodate">
-                    <update-dependency module="bullet" artifact="bullet/libBullet3Common.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletCollision.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletDynamics.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletFileLoader.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletInverseDynamics.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletInverseDynamicsUtils.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletRobotics.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletSoftBody.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libBulletWorldImporter.a"/>
-                    <update-dependency module="bullet" artifact="bullet/libLinearMath.a"/>
-                </parallel>
-            </beforeLink>
             <link>
                 <arg value="-ldl"/>
                 <arg value="-L${lib.native}/org/lwjgl/bullet"/>
@@ -456,22 +435,5 @@
             </or>
         </condition>
 
-        <sequential unless:set="native-dependencies-uptodate">
-            <parallel threadsPerProcessor="4" failonany="true">
-
-            <update-dependency module="assimp" artifact="libassimp.so"/>
-            <update-dependency module="bgfx" artifact="libbgfx.so"/>
-            <update-dependency module="jemalloc" artifact="libjemalloc.so"/>
-            <update-dependency module="glfw" artifact="libglfw.so"/>
-            <update-dependency module="glfw" artifact="libglfw_wayland.so"/>
-            <update-dependency module="openal" artifact="libopenal.so"/>
-            <update-dependency module="opus" artifact="libopus.so"/>
-            <update-dependency module="shaderc" artifact="libshaderc.so"/>
-            <update-dependency module="shaderc" artifact="libshaderc_spvc.so"/>
-
-            </parallel>
-
-            <touch file="${lib.native}/touch.txt" verbose="false"/>
-        </sequential>
     </target>
 </project>
