@@ -37,6 +37,9 @@
                 <arg line="-m32 -mfpmath=sse -msse -msse2" if:set="build.arch.x86"/>
                 <arg line="-O3 @{lto} -fPIC @{flags} -pthread -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -D_GNU_SOURCE -DNDEBUG -DLWJGL_OPENBSD -DLWJGL_${build.arch}"/>
 
+                <arg value="-I/usr/local/include"/>
+                <arg value="-I/usr/X11R6/include"/>
+
                 <arg value="-I${jni.headers}"/>
                 <arg value="-I${jni.headers}/openbsd"/>
 
@@ -123,7 +126,6 @@
 
                 <arg line="-Wl,--no-undefined"/>
                 <arg line="-Wl,--version-script,${version.script}"/>
-                <arg line="-Wl,--wrap,memcpy" if:set="build.arch.x64"/>
                 <fileset dir="${dest}" includes="*.o"/>
                 <link/>
             </apply>
