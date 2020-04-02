@@ -35,7 +35,7 @@
                 <arg line="-c -std=c++11" if:set="cpp"/>
                 <arg line="-m64" if:set="build.arch.x64"/>
                 <arg line="-m32 -mfpmath=sse -msse -msse2" if:set="build.arch.x86"/>
-                <arg line="-O3 -fPIC @{flags} -pthread -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -D_GNU_SOURCE -DNDEBUG -DLWJGL_OPENBSD -DLWJGL_${build.arch}"/>
+                <arg line="-O3 @{lto} -fPIC @{flags} -pthread -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -D_GNU_SOURCE -DNDEBUG -DLWJGL_OPENBSD -DLWJGL_${build.arch}"/>
 
                 <arg value="-I/usr/local/include"/>
                 <arg value="-I/usr/X11R6/include"/>
@@ -122,7 +122,7 @@
                 <arg value="-m32" if:set="build.arch.x86"/>
 
                 <arg line="-z noexecstack"/>
-                <arg line="-O3 -fPIC -pthread -o ${lib.arch}/lib${name}.so"/>
+                <arg line="-O3 @{lto} -fPIC -pthread -o ${lib.arch}/lib${name}.so"/>
 
                 <arg line="-Wl,--no-undefined"/>
                 <arg line="-Wl,--version-script,${version.script}"/>
