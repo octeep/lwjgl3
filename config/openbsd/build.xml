@@ -19,7 +19,7 @@
         <attribute name="lang" default="c"/>
         <attribute name="gcc.exec" default="${gcc.prefix}cc${gcc.suffix}"/>
         <attribute name="gpp.exec" default="${gcc.prefix}c++${gcc.suffix}"/>
-        <attribute name="lto" default=""/>
+        <attribute name="lto" default="-flto"/>
         <attribute name="flags" default=""/>
         <attribute name="simple" default="false"/>
         <attribute name="relative" default="true"/>
@@ -122,7 +122,7 @@
                 <arg value="-m32" if:set="build.arch.x86"/>
 
                 <arg line="-z noexecstack"/>
-                <arg line="-O3 @{lto} -fPIC -pthread -o ${lib.arch}/lib${name}.so"/>
+                <arg line="-O3 -flto -fPIC -pthread -o ${lib.arch}/lib${name}.so"/>
 
                 <arg line="-Wl,--no-undefined"/>
                 <arg line="-Wl,--version-script,${version.script}"/>
