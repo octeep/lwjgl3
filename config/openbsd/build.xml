@@ -114,7 +114,6 @@
                 <arg value="-m64" if:set="build.arch.x64"/>
                 <arg value="-m32" if:set="build.arch.x86"/>
 
-                <arg line="-z noexecstack"/>
                 <arg line="-O3 -flto -fPIC -pthread -o ${lib.arch}/lib${name}.so"/>
 
                 <arg line="-Wl,--no-undefined"/>
