@@ -164,13 +164,11 @@
                 </fileset>
             </source>
             <link>
-                <fileset dir="${lib.native}/org/lwjgl">
+                <fileset dir="/usr/local/lib">
                     <include name="libdyn*.a"/>
                 </fileset>
-		<!--
-                <arg value="-ldl"/>
-		-->
                 <arg value="-v"/>
+                <arg value="-L/usr/local/lib"/>
                 <arg value="-lc"/>
             </link>
         </build>
@@ -178,9 +176,6 @@
         <!-- BULLET -->
         <build module="bullet" simple="true" linker="c++" if:true="${binding.bullet}">
             <link>
-		<!--
-                <arg value="-ldl"/>
-		-->
                 <arg value="-L${lib.native}/org/lwjgl/bullet"/>
                 <arg value="-L/usr/local/lib"/>
                 <arg value="-lBulletWorldImporter"/>
@@ -197,9 +192,6 @@
         </build>
 
         <!-- LIBDIVIDE -->
-	<!--
-        <build_simple module="libdivide"/>
-	-->
         <build module="libdivide" simple="true" if:true="${binding.libdivide}">
 	    <link>
 		<arg value="-lc"/>
@@ -342,9 +334,6 @@
                 <fileset dir="." includes="${src.generated}/*.c" excludes="**/*Metal.c"/>
             </source>
             <link>
-		<!--
-                <arg value="-ldl"/>
-		-->
                 <arg value="-lc"/>
                 <arg value="-lGL"/>
                 <arg line="-L/usr/X11R6/lib"/>
