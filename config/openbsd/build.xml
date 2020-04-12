@@ -173,6 +173,7 @@
         </build>
 
         <!-- BULLET -->
+	<!--
         <build module="bullet" simple="true" linker="c++" if:true="${binding.bullet}">
             <link>
                 <arg value="-L${lib.native}/org/lwjgl/bullet"/>
@@ -189,6 +190,7 @@
                 <arg value="-lBulletRobotics"/>
             </link>
         </build>
+	-->
 
         <!-- LIBDIVIDE -->
         <build module="libdivide" simple="true" if:true="${binding.libdivide}">
