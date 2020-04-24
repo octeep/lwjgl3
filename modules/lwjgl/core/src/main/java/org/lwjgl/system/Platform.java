@@ -99,6 +99,8 @@ public enum Platform {
             current = LINUX;
         } else if (osName.startsWith("Mac OS X") || osName.startsWith("Darwin")) {
             current = MACOSX;
+        } else if (osName.startsWith("OpenBSD") || osName.startsWith("openbsd")) {
+            current = OPENBSD;
         } else {
             throw new LinkageError("Unknown platform: " + osName);
         }
