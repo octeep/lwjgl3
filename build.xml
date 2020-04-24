@@ -356,7 +356,6 @@
             <compileBinding binding="bgfx"/>
             <compileBinding binding="bullet"/>
             <compileBinding binding="cuda"/>
-            <compileBinding binding="driftfx"/>
             <compileBinding binding="egl"/>
             <compileBinding binding="jawt"/>
             <compileBinding binding="jemalloc"/>
@@ -651,7 +650,6 @@
             <include name="org/lwjgl/demo/bgfx/**" if:set="test.bgfx"/>
             <include name="org/lwjgl/demo/bullet/**" if:true="${binding.bullet}"/>
             <include name="org/lwjgl/demo/cuda/**" if:true="${binding.cuda}"/>
-            <include name="org/lwjgl/demo/driftfx/**" if:true="${binding.driftfx}"/>
             <include name="org/lwjgl/demo/egl/**" if:set="test.egl"/>
             <include name="org/lwjgl/demo/glfw/**" if:set="test.glfw"/>
             <include name="org/lwjgl/demo/llvm/**" if:true="${binding.llvm}"/>
@@ -954,6 +952,7 @@
         <element name="linux-arm64-content" optional="true"/>
         <element name="linux-arm32-content" optional="true"/>
         <element name="macos-content" optional="true"/>
+        <element name="openbsd-content" optional="true"/>
         <element name="windows-content" optional="true"/>
         <element name="windows-x86-content" optional="true"/>
         <sequential>
@@ -1041,6 +1040,9 @@
                 <natives-jar name="@{name}" title="@{title}" platform="macos" path="macos/x64" type="dylib">
                     <macos-content/>
                 </natives-jar>
+                <natives-jar name="@{name}" title="@{title}" platform="openbsd" path="openbsd/x64" type="so">
+                    <openbsd-content/>
+                </natives-jar>
                 <natives-jar name="@{name}" title="@{title}" platform="windows" path="windows/x64" type="dll">
                     <windows-content/>
                 </natives-jar>
@@ -1082,6 +1084,7 @@
                 <linux-arm64-content><linux-arm64/></linux-arm64-content>
                 <linux-arm32-content><linux-arm32/></linux-arm32-content>
                 <macos-content><macos/></macos-content>
+		<openbsd-content><openbsd/></openbsd-content>
                 <windows-content><windows/></windows-content>
                 <windows-x86-content><windows-x86/></windows-x86-content>
             </release-natives>
@@ -1250,9 +1253,6 @@
         <!-- CUDA -->
         <release-module name="cuda" title="CUDA" if:true="${binding.cuda}"/>
 
-        <!-- DriftFX -->
-        <release-module name="driftfx" native-library="lwjgl_driftfx" title="DriftFX" if:true="${binding.driftfx}"/>
-
         <!-- EGL -->
         <release-module name="egl" title="EGL" if:true="${binding.egl}"/>
 
@@ -1276,6 +1276,9 @@
 
                 <get-release platform="macos" arch="x64" file="libglfw.dylib"/>
                 <get-release platform="macos" arch="x64" file="libglfw.dylib.git"/>
+
+                <get-release platform="openbsd" arch="x64" file="libglfw.so"/>
+                <get-release platform="openbsd" arch="x64" file="libglfw.so.git"/>
 
                 <get-release platform="windows" arch="x64" file="glfw.dll"/>
                 <get-release platform="windows" arch="x64" file="glfw.dll.git"/>
@@ -1325,6 +1328,7 @@
             <natives>
                 <get-release platform="linux" arch="x64" file="liblwjgl_nfd.so"/>
                 <get-release platform="macos" arch="x64" file="liblwjgl_nfd.dylib"/>
+                <get-release platform="openbsd" arch="x64" file="liblwjgl_nfd.so"/>
                 <get-release platform="windows" arch="x64" file="lwjgl_nfd.dll"/>
                 <get-release platform="windows" arch="x86" file="lwjgl_nfd.dll"/>
             </natives>
@@ -1350,6 +1354,9 @@
 
                 <get-release platform="macos" arch="x64" file="libopenal.dylib"/>
                 <get-release platform="macos" arch="x64" file="libopenal.dylib.git"/>
+
+                <get-release platform="openbsd" arch="x64" file="libopenal.so"/>
+                <get-release platform="openbsd" arch="x64" file="libopenal.so.git"/>
 
                 <get-release platform="windows" arch="x64" file="OpenAL.dll"/>
                 <get-release platform="windows" arch="x64" file="OpenAL.dll.git"/>
