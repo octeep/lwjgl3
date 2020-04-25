@@ -1277,7 +1277,7 @@
                 <get-release platform="macos" arch="x64" file="libglfw.dylib"/>
                 <get-release platform="macos" arch="x64" file="libglfw.dylib.git"/>
 
-                <get-release platform="openbsd" arch="x64" file="libglfw.so"/>
+                <get-release platform="openbsd" arch="x64" file="liblwjgl_glfw.so"/>
                 <get-release platform="openbsd" arch="x64" file="libglfw.so.git"/>
 
                 <get-release platform="windows" arch="x64" file="glfw.dll"/>
