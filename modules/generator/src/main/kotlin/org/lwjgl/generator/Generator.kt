@@ -43,6 +43,7 @@ enum class Module(
     CORE_LIBC("core.libc", "org.lwjgl.system.libc"),
     CORE_LINUX("core.linux", "org.lwjgl.system.linux"),
     CORE_MACOS("core.macos", "org.lwjgl.system.macosx"),
+    CORE_OPENBSD("core.openbsd", "org.lwjgl.system.openbsd"),
     CORE_WINDOWS("core.windows", "org.lwjgl.system.windows"),
 
     ASSIMP("binding.assimp", "org.lwjgl.assimp"),

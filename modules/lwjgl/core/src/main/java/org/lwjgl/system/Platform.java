@@ -32,6 +32,18 @@ public enum Platform {
             return System.mapLibraryName(name);
         }
     },
+    OPENBSD("OpenBSD") {
+        private final Pattern SO = Pattern.compile("(?:^|/)lib\\w+[.]so(?:[.]\\d+){0,3}$");
+
+        @Override
+        String mapLibraryName(String name) {
+            if (SO.matcher(name).find()) {
+                return name;
+            }
+
+            return System.mapLibraryName(name);
+        }
+    },
     WINDOWS("Windows") {
         @Override
         String mapLibraryName(String name) {
@@ -53,6 +65,8 @@ public enum Platform {
             PLATFORM = Platform.LINUX;
         } else if (osName.startsWith("Mac OS X") || osName.startsWith("Darwin")) {
             PLATFORM = Platform.MACOSX;
+        } else if (osName.startsWith("OpenBSD") || osName.startsWith("openbsd")) {
+	    PLATFORM = Platform.OPENBSD;
         } else {
             throw new LinkageError("Unknown platform: " + osName);
         }

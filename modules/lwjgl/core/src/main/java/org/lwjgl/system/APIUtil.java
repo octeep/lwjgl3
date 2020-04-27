@@ -7,6 +7,7 @@ package org.lwjgl.system;
 import org.lwjgl.*;
 import org.lwjgl.system.linux.*;
 import org.lwjgl.system.macosx.*;
+import org.lwjgl.system.openbsd.*;
 import org.lwjgl.system.windows.*;
 
 import javax.annotation.*;

@@ -13,6 +13,9 @@
 #ifdef LWJGL_MACOS
     #include "macOSConfig.h"
 #endif
+#ifdef LWJGL_OPENBSD
+    #include "OpenBSDConfig.h"
+#endif
 
 #ifndef DISABLE_WARNINGS
     #define DISABLE_WARNINGS()
