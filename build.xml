@@ -711,7 +711,7 @@
             <jvmarg value="-Dorg.lwjgl.util.Debug=true"/>
             <jvmarg value="-Dorg.lwjgl.util.DebugAllocator=true"/>
             <jvmarg value="-XstartOnFirstThread" if:set="platform.macos"/>
-            <jvmarg value="-Xss256k"/> <!-- for StackTest::testSOE -->
+            <jvmarg value="-Xss8m"/> <!-- for StackTest::testSOE -->
             <jvmarg line="${jvmargs}" if:set="jvmargs"/>
 
             <xmlfileset dir="${config}" includes="tests.xml,tests_${platform}.xml"/>
@@ -1277,7 +1277,7 @@
                 <get-release platform="macos" arch="x64" file="libglfw.dylib"/>
                 <get-release platform="macos" arch="x64" file="libglfw.dylib.git"/>
 
-                <get-release platform="openbsd" arch="x64" file="liblwjgl_glfw.so"/>
+                <get-release platform="openbsd" arch="x64" file="libglfw.so"/>
                 <get-release platform="openbsd" arch="x64" file="libglfw.so.git"/>
 
                 <get-release platform="windows" arch="x64" file="glfw.dll"/>
