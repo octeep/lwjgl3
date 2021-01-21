@@ -124,6 +124,8 @@ public final class APIUtil {
                 return new LinuxLibrary(name);
             case MACOSX:
                 return MacOSXLibrary.create(name);
+            case OPENBSD:
+                return new OpenBSDLibrary(name);
             default:
                 throw new IllegalStateException();
         }
