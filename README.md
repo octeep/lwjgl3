@@ -35,6 +35,7 @@ In order to get MultiMC to launch Minecraft with the libraries that we have comp
 Fetch the script from `https://gist.github.com/octeep/8ffa2fdd02f0ac6ebbe03ca0c393ea4d`, modify the ROOT variable accordingly.    
 Create a new instance in MultiMC, go to instance settings, modify `Java installation` path to the script's path.     
 When you click `Test` MultiMC would say it does not recognize the script as a valid Java binary, but launching the instance would still work.
+Afterwards, move the .so binaries from bin/libs/openbsd to bin/libs.
 
 Now enjoy Minecraft >= 1.13 on your OpenBSD machine :D        
 
