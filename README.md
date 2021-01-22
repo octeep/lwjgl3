@@ -17,13 +17,17 @@ Firstly you would need to get the `dyncall`, `openal` and `glfw >= 3.3` ports in
 however `glfw` is still in version 3.2 in OpenBSD's port tree. You would need to compile `glfw 3.3`, the port thereof can be fetched from
 `https://marc.info/?l=openbsd-ports&m=158610418115958&w=2` (Credits to Thomas de Grivel for making the port).
 
+Make sure your `JAVA_HOME` is set to jdk 1.8.
+
 Afterwards, you would need to compile LWJGL 3. This process requires two commands.   
 
-`ant -Dos.name=OpenBSD -Dplatform=openbsd`
+`ant`
 
 This generates java templates and compiles them along with the native libraries. Then execute   
 
-`LWJGL_BUILD_OFFLINE=true ant -Dos.name=OpenBSD -Dplatform=openbsd release`    
+`LWJGL_BUILD_OFFLINE=true ant release`    
+
+This would create a warning that says compiling with jdk < 10 would not be recommended. You can safely ignore it.
 
 This would package the compiled resources into jar files and .so libraries. `LWJGL_BUILD_OFFLINE` is set to `true`    
 to prevent it from fetching windows, macos stuff that would result in HTTP 404 errors, halting the entire compilation process.    
@@ -35,6 +39,7 @@ In order to get MultiMC to launch Minecraft with the libraries that we have comp
 Fetch the script from `https://gist.github.com/octeep/8ffa2fdd02f0ac6ebbe03ca0c393ea4d`, modify the ROOT variable accordingly.    
 Create a new instance in MultiMC, go to instance settings, modify `Java installation` path to the script's path.     
 When you click `Test` MultiMC would say it does not recognize the script as a valid Java binary, but launching the instance would still work.
+
 Afterwards, move the .so binaries from bin/libs/openbsd to bin/libs.
 
 Now enjoy Minecraft >= 1.13 on your OpenBSD machine :D        
